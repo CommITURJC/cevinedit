@@ -1,0 +1,79 @@
+package org.cevinedit.editor.view.parts;
+
+import org.cevinedit.editor.view.dialogs.PolygonPointsDialog;
+import org.cevinedit.editor.view.listeners.CevineditEditorGenerateEMFListener;
+import org.cevinedit.editor.view.listeners.CevineditEditorGraphicComplexityListener;
+import org.cevinedit.editor.view.listeners.CevineditEditorInteractiveHelpListener;
+import org.cevinedit.editor.view.listeners.CevineditEditorSemioticClarityListener;
+import org.cevinedit.editor.view.listeners.CevineditEditorVisualExpressivenessListener;
+import org.cevinedit.editor.view.listeners.TestListener;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class CevineditEditorMainToolBar {
+
+	protected CevineditEditor _editor = null;
+	protected Composite _toolsLayout = null;
+	public CevineditEditorMainToolBar(CevineditEditor editor, Composite toolsLayout)
+	{
+		_editor = editor;
+		_toolsLayout = toolsLayout;
+
+		initialize();
+	}
+	
+	public void createCevineditTools()
+	{
+
+		Button btn_semiotic_clarity_anomalies = new Button(_toolsLayout, SWT.PUSH);
+		btn_semiotic_clarity_anomalies.setSize(200, 50);
+		btn_semiotic_clarity_anomalies.setText(_editor.getTextLang("CevineditEditorMainToolBar", "SemioticClarityBtn"));
+		btn_semiotic_clarity_anomalies.addSelectionListener(CevineditEditorSemioticClarityListener.i(_editor));
+				
+		Button btn_visual_variables_saturation = new Button(_toolsLayout, SWT.PUSH);
+		btn_visual_variables_saturation.setSize(200, 50);
+		btn_visual_variables_saturation.setText(_editor.getTextLang("CevineditEditorMainToolBar", "VisualExpressivenessBtn"));
+		btn_visual_variables_saturation.addSelectionListener(CevineditEditorVisualExpressivenessListener.i(_editor));
+		
+		Button btn_graphic_complexity = new Button(_toolsLayout, SWT.PUSH);
+		btn_graphic_complexity.setSize(200, 50);
+		btn_graphic_complexity.setText(_editor.getTextLang("CevineditEditorMainToolBar", "GraphicEconomyBtn"));
+		btn_graphic_complexity.addSelectionListener(CevineditEditorGraphicComplexityListener.i(_editor));
+		
+	}
+	
+	public void createOtherOptions()
+	{
+		Button btn_generator = new Button(_toolsLayout, SWT.PUSH);
+		btn_generator.setSize(200, 50);
+		btn_generator.setText(_editor.getTextLang("CevineditEditorMainToolBar", "GenerateGMFEditorBtn"));		
+		btn_generator.addSelectionListener(CevineditEditorGenerateEMFListener.i(_editor));
+		
+		Button btn_helphtml = new Button(_toolsLayout, SWT.PUSH);
+		btn_helphtml.setSize(200, 50);
+		btn_helphtml.setText(_editor.getTextLang("CevineditEditorMainToolBar", "DeactivateHelpSupportBtn"));
+		btn_helphtml.addSelectionListener(CevineditEditorInteractiveHelpListener.i(_editor));	
+		
+		/*Button btn_test = new Button(_toolsLayout, SWT.PUSH);
+		btn_test.setSize(200, 50);
+		btn_test.setText("Test");
+		btn_test.addSelectionListener(new TestListener(_editor));*/
+	}
+	
+	public void initialize()
+	{
+		createCevineditTools();
+		Label l2_separator = new Label (_toolsLayout, SWT.SEPARATOR | SWT.VERTICAL);
+		createOtherOptions();
+
+	}
+	
+	public static CevineditEditorMainToolBar i(CevineditEditor editor, Composite toolsLayout)
+	{
+		return new CevineditEditorMainToolBar(editor, toolsLayout);
+	}
+}

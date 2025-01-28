@@ -1,0 +1,229 @@
+/**
+ */
+package cevinedit;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Link</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link cevinedit.Link#getBrightness <em>Brightness</em>}</li>
+ *   <li>{@link cevinedit.Link#getColor <em>Color</em>}</li>
+ *   <li>{@link cevinedit.Link#getLabelFontStyle <em>Label Font Style</em>}</li>
+ *   <li>{@link cevinedit.Link#getSourceDecoration <em>Source Decoration</em>}</li>
+ *   <li>{@link cevinedit.Link#getTargetDecoration <em>Target Decoration</em>}</li>
+ *   <li>{@link cevinedit.Link#getTexture <em>Texture</em>}</li>
+ *   <li>{@link cevinedit.Link#getWidth <em>Width</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see cevinedit.CevineditPackage#getLink()
+ * @model abstract="true"
+ * @generated
+ */
+public interface Link extends PersonalizedElement {
+	/**
+	 * Returns the value of the '<em><b>Brightness</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.Brightness}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Brightness</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Brightness</em>' attribute.
+	 * @see cevinedit.Brightness
+	 * @see #setBrightness(Brightness)
+	 * @see cevinedit.CevineditPackage#getLink_Brightness()
+	 * @model
+	 * @generated
+	 */
+	Brightness getBrightness();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getBrightness <em>Brightness</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Brightness</em>' attribute.
+	 * @see cevinedit.Brightness
+	 * @see #getBrightness()
+	 * @generated
+	 */
+	void setBrightness(Brightness value);
+
+	/**
+	 * Returns the value of the '<em><b>Color</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.Color}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Color</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Color</em>' attribute.
+	 * @see cevinedit.Color
+	 * @see #setColor(Color)
+	 * @see cevinedit.CevineditPackage#getLink_Color()
+	 * @model
+	 * @generated
+	 */
+	Color getColor();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getColor <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Color</em>' attribute.
+	 * @see cevinedit.Color
+	 * @see #getColor()
+	 * @generated
+	 */
+	void setColor(Color value);
+
+	/**
+	 * Returns the value of the '<em><b>Label Font Style</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.FontStyle}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label Font Style</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label Font Style</em>' attribute.
+	 * @see cevinedit.FontStyle
+	 * @see #setLabelFontStyle(FontStyle)
+	 * @see cevinedit.CevineditPackage#getLink_LabelFontStyle()
+	 * @model
+	 * @generated
+	 */
+	FontStyle getLabelFontStyle();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getLabelFontStyle <em>Label Font Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label Font Style</em>' attribute.
+	 * @see cevinedit.FontStyle
+	 * @see #getLabelFontStyle()
+	 * @generated
+	 */
+	void setLabelFontStyle(FontStyle value);
+
+	/**
+	 * Returns the value of the '<em><b>Source Decoration</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.LinkFigure}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source Decoration</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source Decoration</em>' attribute.
+	 * @see cevinedit.LinkFigure
+	 * @see #setSourceDecoration(LinkFigure)
+	 * @see cevinedit.CevineditPackage#getLink_SourceDecoration()
+	 * @model
+	 * @generated
+	 */
+	LinkFigure getSourceDecoration();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getSourceDecoration <em>Source Decoration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source Decoration</em>' attribute.
+	 * @see cevinedit.LinkFigure
+	 * @see #getSourceDecoration()
+	 * @generated
+	 */
+	void setSourceDecoration(LinkFigure value);
+
+	/**
+	 * Returns the value of the '<em><b>Target Decoration</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.LinkFigure}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Decoration</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Decoration</em>' attribute.
+	 * @see cevinedit.LinkFigure
+	 * @see #setTargetDecoration(LinkFigure)
+	 * @see cevinedit.CevineditPackage#getLink_TargetDecoration()
+	 * @model
+	 * @generated
+	 */
+	LinkFigure getTargetDecoration();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getTargetDecoration <em>Target Decoration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Decoration</em>' attribute.
+	 * @see cevinedit.LinkFigure
+	 * @see #getTargetDecoration()
+	 * @generated
+	 */
+	void setTargetDecoration(LinkFigure value);
+
+	/**
+	 * Returns the value of the '<em><b>Texture</b></em>' attribute.
+	 * The literals are from the enumeration {@link cevinedit.Texture}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Texture</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Texture</em>' attribute.
+	 * @see cevinedit.Texture
+	 * @see #setTexture(Texture)
+	 * @see cevinedit.CevineditPackage#getLink_Texture()
+	 * @model
+	 * @generated
+	 */
+	Texture getTexture();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getTexture <em>Texture</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Texture</em>' attribute.
+	 * @see cevinedit.Texture
+	 * @see #getTexture()
+	 * @generated
+	 */
+	void setTexture(Texture value);
+
+	/**
+	 * Returns the value of the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Width</em>' attribute.
+	 * @see #setWidth(int)
+	 * @see cevinedit.CevineditPackage#getLink_Width()
+	 * @model
+	 * @generated
+	 */
+	int getWidth();
+
+	/**
+	 * Sets the value of the '{@link cevinedit.Link#getWidth <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Width</em>' attribute.
+	 * @see #getWidth()
+	 * @generated
+	 */
+	void setWidth(int value);
+
+} // Link

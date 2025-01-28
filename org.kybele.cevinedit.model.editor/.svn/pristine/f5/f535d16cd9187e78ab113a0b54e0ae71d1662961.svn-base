@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated cevinedit -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="cevinedit.presentation.CevineditModelWizardID"
+            name="%_UI_CevineditModelWizard_label"
+            class="cevinedit.presentation.CevineditModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CevineditModelFile.gif">
+         <description>%_UI_CevineditModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated cevinedit -->
+      <editor
+            id="cevinedit.presentation.CevineditEditorID"
+            name="%_UI_CevineditEditor_label"
+            icon="icons/full/obj16/CevineditModelFile.gif"
+            extensions="cevinedit"
+            class="cevinedit.presentation.CevineditEditor"
+            contributorClass="cevinedit.presentation.CevineditActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

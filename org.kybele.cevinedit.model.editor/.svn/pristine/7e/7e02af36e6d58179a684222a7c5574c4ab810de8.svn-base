@@ -1,0 +1,134 @@
+package org.cevinedit.editor.view.listeners;
+
+import java.util.List;
+
+import org.cevinedit.core.tools.CevineditProjectTools;
+import org.cevinedit.editor.view.dialogs.PolygonPointsDialog;
+import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.Button;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class CevineditEditorSearchImageSetPointsListener implements
+		SelectionListener {
+
+	protected CevineditEditor _editor = null;
+	
+	public CevineditEditorSearchImageSetPointsListener(CevineditEditor editor)
+	{
+		_editor = editor;
+	}
+	
+	@Override
+	public void widgetSelected(SelectionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() instanceof Button)
+		{
+			Button btn = (Button) e.getSource();
+			
+			if(btn.getText().equals("Set Points"))
+			{
+				PolygonPointsDialog polygonDialog = new PolygonPointsDialog(_editor, _editor.getSite().getShell(), null);
+				String points = "";
+				if (polygonDialog.open() == polygonDialog.OK)
+				{
+					points = polygonDialog.getPoints();
+					if (_editor.getActualPersonalization().containsKey("pointsPolygon"))
+					{
+						_editor.getActualPersonalization().remove("pointsPolygon");
+						_editor.getActualPersonalization().put("pointsPolygon", points);
+					}
+					else
+					{
+						_editor.getActualPersonalization().put("pointsPolygon", points);
+					}
+				}
+				System.out.println("Ptos. Seleccionados: "+points);
+			}
+			else if(btn.getText().equals("Search Image"))
+			{
+				ResourceDialog rs_dialog_image = new ResourceDialog(_editor.getMainLayer().getShell(), "Select Image file", SWT.NONE);
+				
+				if (rs_dialog_image.open() == rs_dialog_image.OK)
+				{
+					String extension = rs_dialog_image.getURIs().get(0).fileExtension();
+					if (rs_dialog_image.getURIs().size() <1)
+					{
+						MessageDialog.openError(_editor.getMainLayer().getShell(), "Incorrect Selection", "You must select one file");
+					}
+					else
+					if (!rs_dialog_image.getURIs().get(0).fileExtension().equals("png") && 
+							!rs_dialog_image.getURIs().get(0).fileExtension().equals("jpg")&&
+							!rs_dialog_image.getURIs().get(0).fileExtension().equals("jpeg"))
+					{
+						MessageDialog.openError(_editor.getMainLayer().getShell(), "Incorrect Image Extension", "Invalid Extension "+rs_dialog_image.getURIs().get(0).fileExtension()+". You must selected only image files (*.png, *.jpg, *.jpeg).");
+					}
+					else
+					{			
+						List<URI> uris = rs_dialog_image.getURIs();
+						if (_editor.getActualPersonalization().containsKey("imagePath"))
+						{
+							_editor.getActualPersonalization().remove("imagePath");
+							String fileName = uris.get(0).toFileString().substring(uris.get(0).toFileString().lastIndexOf("\\")+1);
+							_editor.getActualPersonalization().put("imagePath", fileName);
+							CevineditProjectTools.copyImageToProjectFolderImages(_editor, uris.get(0));
+						}
+						else
+						{
+							String fileName = uris.get(0).toFileString().substring(uris.get(0).toFileString().lastIndexOf("\\")+1);
+							_editor.getActualPersonalization().put("imagePath", fileName);
+							CevineditProjectTools.copyImageToProjectFolderImages(_editor, uris.get(0));
+						}
+					}
+				}
+			}
+			else if(btn.getText().equals("Search SVG"))
+			{
+				ResourceDialog rs_dialog_svg = new ResourceDialog(_editor.getMainLayer().getShell(), "Select SVG file", SWT.NONE);
+				
+				if (rs_dialog_svg.open() == rs_dialog_svg.OK)
+				{
+					if (rs_dialog_svg.getURIs().size() <1)
+					{
+						MessageDialog.openError(_editor.getMainLayer().getShell(), "Incorrect Selection", "You must select one file");
+					}
+					else					
+					if (!rs_dialog_svg.getURIs().get(0).fileExtension().equals("svg"))
+					{
+						MessageDialog.openError(_editor.getMainLayer().getShell(), "Invalid Extension", "Invalid Extension "+rs_dialog_svg.getURIs().get(0).fileExtension()+". You must selected only .svg files.");
+					}
+					else
+					{			
+						List<URI> uris = rs_dialog_svg.getURIs();
+						if (_editor.getActualPersonalization().containsKey("imagePath"))
+						{
+							_editor.getActualPersonalization().remove("imagePath");
+							String fileName = uris.get(0).toFileString().substring(uris.get(0).toFileString().lastIndexOf("\\")+1);
+							_editor.getActualPersonalization().put("imagePath", fileName);
+							CevineditProjectTools.copyImageToProjectFolderImages(_editor, uris.get(0));
+						}		
+						else
+						{
+							String fileName = uris.get(0).toFileString().substring(uris.get(0).toFileString().lastIndexOf("\\")+1);
+							_editor.getActualPersonalization().put("imagePath", fileName);
+							CevineditProjectTools.copyImageToProjectFolderImages(_editor, uris.get(0));
+						}
+
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void widgetDefaultSelected(SelectionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

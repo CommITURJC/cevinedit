@@ -1,0 +1,201 @@
+package org.cevinedit.editor.view.listeners;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+
+import org.cevinedit.core.generator.CevineditGenerator;
+import org.cevinedit.core.lang.StringsDB;
+import org.cevinedit.core.tools.CevineditModelTools;
+import org.cevinedit.core.tools.CevineditProjectTools;
+import org.eclipse.core.internal.resources.Project;
+import org.eclipse.core.internal.resources.Workspace;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.ui.part.FileEditorInput;
+
+import cevinedit.NodeEClass;
+import cevinedit.PersonalizedElement;
+import cevinedit.impl.CEViNEditRootImpl;
+import cevinedit.presentation.CevineditEditor;
+
+public class TestListener implements SelectionListener {
+
+	protected CevineditEditor _editor = null;
+	protected Resource _model = null;
+	
+	public TestListener(CevineditEditor editor)
+	{
+		_editor = editor;
+		_model = editor.getCevineditModelResource();
+	}
+	
+	@Override
+	public void widgetSelected(SelectionEvent e) 
+	{
+		/*
+		CEViNEditRootImpl _cevineditRoot = (CEViNEditRootImpl) _model.getContents().get(0);
+		
+		System.out.println("[Test Listener] - "+ _cevineditRoot);
+		
+		EList<NodeEClass> _customizations = CevineditModelTools.getNodeEClassWithImageFigure(_editor);
+		
+		int i=0;
+		for (NodeEClass nodeEClass : _customizations) {
+			System.out.println("[Test Listener] - Customization ("+i+"): "+ nodeEClass);
+			++i;
+		}
+		
+		// TODO Auto-generated method stub
+		
+		// Get the Paht of the file edited by the editor.
+		IPath fileEditorPath = ((FileEditorInput) _editor.getEditorInput()).getPath();
+		
+		System.out.println("[Test Listener] - File Editor Path: "+ fileEditorPath);
+		
+		// Get the actual eclipse workspace working project 
+		IProject actualWorkingProject = CevineditProjectTools.getActualWorkingProjectEditor(_editor);
+		
+		// Get the .images/ folder of the actual working project
+		IFolder imagesFolderActualProject = actualWorkingProject.getFolder(".images/");
+		
+
+		
+		System.out.println("[Test Listener] - " + actualWorkingProject);
+		
+		IProject diagramProject = CevineditProjectTools.getWorkspaceProjectByExtension(".diagram");
+
+
+		System.out.println("[Test Listener] - Diagram project: " + diagramProject.getName());
+				
+				// Get the src/ folder of the .diagram project.
+				IFolder folderSRC = diagramProject.getFolder("src");
+				
+				// Get the figures/ folder of the .diagram project. This folder posible not exits now.
+				IFolder figuresFolderDiagramProject = folderSRC.getFolder("figures/");
+				
+				// Create the figures/ folder if not exists.
+				if (!figuresFolderDiagramProject.exists())
+				{
+					try 
+					{
+						figuresFolderDiagramProject.create(IResource.NONE, true, null);
+					} 
+					catch (CoreException e1) 
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				
+				}
+				
+				
+				// Get the img/ folder of .diagram project.
+				IFolder imgFolderDiagramProject = diagramProject.getFolder("img/");
+				
+				// Create the img/ folder if not exists.
+				if (!imgFolderDiagramProject.exists())
+				{
+					try 
+					{
+						imgFolderDiagramProject.create(IResource.NONE, true, null);
+					} 
+					catch (CoreException e1) 
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+				}			
+				
+				for (NodeEClass nodeEClass : _customizations) {
+					
+				
+				
+				// Get an image of .images folder actual working project
+				if (imagesFolderActualProject.getFile(nodeEClass.getImagePath()).exists())
+				{
+					
+					// Create a new image in .diagram images folder project
+					IFile newImageFileDiagramProject = imgFolderDiagramProject.getFile(nodeEClass.getImagePath());
+					
+					// Create if not exists
+					if (newImageFileDiagramProject.exists()) 
+					{
+						try 
+						{
+							newImageFileDiagramProject.delete(true, null);
+						} catch (CoreException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					
+					// Copy the content image of actual working project in the new image of the .diagram img folder project
+					try 
+					{
+						newImageFileDiagramProject.create(imagesFolderActualProject.getFile(nodeEClass.getImagePath()).getContents(), true, null);
+					} 
+					catch (CoreException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+				}
+				
+				// Generate the .java file associated to the new image created
+				IFile imageJavaClassDiagramProject = figuresFolderDiagramProject.getFile(nodeEClass.getName()+".java");
+				
+				// Create the .java file of the new image if not exists
+				if (!imageJavaClassDiagramProject.exists())
+				{
+					try 
+					{
+						// Generate the .java class content dinamically
+						String content = CevineditGenerator.imageJavaClassContent(nodeEClass.getName(), "img/", nodeEClass.getImagePath());						
+						
+						// Write the dynamic content generated to the new .java class file in the diagram project
+						InputStream stream;
+						try 
+						{
+							stream = new ByteArrayInputStream(content.getBytes("UTF-8"));
+							imageJavaClassDiagramProject.create(stream, true, null);						
+
+						}
+						catch (UnsupportedEncodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+					} 
+					catch (CoreException e1) 
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+
+			
+			
+				}
+				}
+
+		*/
+		
+		StringsDB db = new StringsDB("EN");
+		db.showMe();
+	}
+
+	@Override
+	public void widgetDefaultSelected(SelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

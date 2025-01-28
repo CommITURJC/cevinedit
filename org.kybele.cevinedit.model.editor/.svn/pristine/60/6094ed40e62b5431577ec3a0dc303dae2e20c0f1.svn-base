@@ -1,0 +1,5 @@
+package org.cevinedit.core.analytics;
+
+public class VisualExpressivenessReport {
+
+}

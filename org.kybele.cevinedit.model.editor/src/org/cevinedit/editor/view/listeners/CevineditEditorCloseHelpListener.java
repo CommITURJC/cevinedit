@@ -1,0 +1,36 @@
+package org.cevinedit.editor.view.listeners;
+
+import org.cevinedit.editor.view.constants.CevineditSashConstants;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class CevineditEditorCloseHelpListener implements SelectionListener {
+
+	protected CevineditEditor _editor = null;
+	
+	public CevineditEditorCloseHelpListener(CevineditEditor editor)
+	{
+		_editor = editor;
+	}
+	
+	
+	public static CevineditEditorCloseHelpListener i(CevineditEditor editor)
+	{
+		return new CevineditEditorCloseHelpListener(editor);
+	}
+
+	
+	@Override
+	public void widgetSelected(SelectionEvent e) {
+		_editor.getMainLayer().setWeights(CevineditSashConstants.TwoEditorsAndTools);
+		_editor.setHelpViewStatusClosed();
+	}
+
+	@Override
+	public void widgetDefaultSelected(SelectionEvent e) {
+
+	}
+
+}

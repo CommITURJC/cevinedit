@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Color</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Content -->
+<h1>Color</h1>
+<hr>
+The choice of <strong>Color </strong>should be related to some kind of relationship between the symbol and the concept it represents. Color is one of the most <strong>cognitively effective</strong> visual variables for the human visual system. Differences in color are detected <strong>three times</strong> faster than shape and are also more easily remembered. However it should not be used as the <strong>sole basis</strong> for distinguishing between symbols, as it is sensitive to variations in visual perception (e.g., color blindness), in screen/printer characteristics (e.g., B/W printer) and in representational mediums (e.g., whiteboards/paper).  
+<hr>
+<img src="img/colors.jpg">
+
+
+</div>
+</body>
+</html>

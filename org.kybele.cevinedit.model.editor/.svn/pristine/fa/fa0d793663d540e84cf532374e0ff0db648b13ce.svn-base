@@ -1,0 +1,444 @@
+package org.cevinedit.core.eugenia;
+
+import java.util.AbstractMap;
+import java.util.Map;
+
+
+
+
+import java.util.Map.Entry;
+
+import org.cevinedit.core.tools.CevineditEcoreTools;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcoreFactory;
+
+public class EugeniaAnnotator 
+{
+
+
+	
+	public static Entry<String,String> createDetailEntry(String key, String value)
+	{
+		Entry<String,String> entry = 
+			    new AbstractMap.SimpleEntry<String, String>(key, value);
+		
+		return entry;
+	}
+		
+	public static boolean isAnnotated(EObject _eobject)
+	{
+		
+		return false;
+	}
+	
+	public static EAnnotation annotateEObjectAsGMFEClassLink(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (!CevineditEcoreTools.isEClass(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.node");		
+		
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.link");
+	}
+	
+	public static EAnnotation annotateEObjectAsGMFLink(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (CevineditEcoreTools.isEReferenceContainement(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's illegal annotate a EReference Containement as a gmf.link");	
+		
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.link");
+	}
+	
+	public static EAnnotation annotateEObjectAsGMFNode(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (!CevineditEcoreTools.isEClass(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.node");		
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.node");
+	}
+	
+	public static EAnnotation annotateEObjectAsGMF(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		
+		if (!CevineditEcoreTools.isEPackage(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf");				
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf");
+	}
+	
+	public static EAnnotation annotateEObjectAsGMFDiagram(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		
+		if (!CevineditEcoreTools.isEClass(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.diagram");				
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.diagram");
+	}
+	
+	public static EAnnotation annotateEObjectAsGMFCompartment(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (!CevineditEcoreTools.isEReferenceContainement(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.affixed");				
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.compartment");
+	}	
+	
+	public static EAnnotation annotateEObjectAsGMFAffixed(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (!CevineditEcoreTools.isEReferenceContainement(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.node");				
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.affixed");
+	}		
+	
+	public static EAnnotation annotateEObjectAsGMFLabel(EObject _eobject) throws EugeniaAnnotatorException
+	{
+		if (!CevineditEcoreTools.isEAttribute(_eobject))
+			throw new EugeniaAnnotatorException("Error. It's not possible annotate a "+_eobject+" as gmf.label");				
+		return CevineditEcoreTools.createEAnnotation(_eobject, "gmf.label");
+	}		
+	
+	
+	
+	public static String generateRGB(int r, int g, int b)
+	{
+		return String.valueOf(r)+","+String.valueOf(g)+","+String.valueOf(b);
+	}
+
+	public static String generateSize(int x, int y)
+	{
+		return String.valueOf(x)+","+String.valueOf(y);
+	}
+	
+	public static String generateArrayInt(int array[])
+	{
+		String s="";
+		for (int i = 0; i < array.length; i++) {
+			if (i>0) s+=", ";
+			s += String.valueOf(array[i]);
+		}
+		return s;
+	}	
+	public static String generateSVGUri(String plugin, String path_to_svg)
+	{
+		return "platform:/"+plugin+"/"+path_to_svg;
+	}
+	
+	// GMF Diagram
+	
+	public static Entry<String, String> GmfDiagram_ModelExtension(String model_extension)
+	{
+		return createDetailEntry("model.extension", model_extension);
+	}
+
+	public static Entry<String, String> GmfDiagram_DiagramExtension(String diagram_extension)
+	{
+		return createDetailEntry("diagram.extension", diagram_extension);
+	}
+	
+	// GMF Node
+	
+	public static Entry<String, String> GmfNode_BorderColor(int r, int g, int b)
+	{
+		return createDetailEntry("border.color", generateRGB(r,g,b));
+	}
+	
+	public static Entry<String, String>  GmfNode_BorderStyle(String style) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaBorderStyle.isBorderStyle(style))
+			throw new EugeniaAnnotatorException("Error. This \""+style+"\" this is not a \"border.style\" valid.");	
+		
+		return createDetailEntry("border.style", EugeniaBorderStyle.checkStyle(style));
+	}	
+	
+	public static Entry<String, String>  GmfNode_BorderWidth(int i)
+	{
+		return createDetailEntry("border.width", String.valueOf(i));
+	}	
+	
+	public static Entry<String, String>  GmfNode_Color(int r, int g, int b)
+	{
+		return createDetailEntry("color", generateRGB(r,g,b));
+	}	
+	
+	public static Entry<String, String>  GmfNode_Figure(String figure) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaFigure.isFigure(figure))
+			throw new EugeniaAnnotatorException("Error. This \""+figure+"\" this is not a \"figure\" valid.");	
+		
+		return createDetailEntry("figure", EugeniaFigure.checkFigure(figure));
+	}
+	
+	public static Entry<String, String>  GmfNode_FigureImage(String figure) throws EugeniaAnnotatorException
+	{
+		return createDetailEntry("figure", "figures."+figure);
+	}
+	public static Entry<String, String>  GmfNode_NoIcon(String figure) throws EugeniaAnnotatorException
+	{
+		return createDetailEntry("label.icon", "false");
+	}	
+	
+	public static Entry<String, String>  GMFNode_Label(String label)
+	{
+		return createDetailEntry("label", label);
+	}		
+	
+	public static Entry<String, String>  GMFNode_LabelIcon(boolean labelIcon)
+	{
+		return createDetailEntry("label.icon", String.valueOf(labelIcon));
+	}
+	
+	public static Entry<String, String>  GMFNode_LabelParser(String labelParser)
+	{
+		return createDetailEntry("label.parser", labelParser);
+	}	
+	
+	public static Entry<String, String>  GMFNode_EditPattern(String labelEditPattern)
+	{
+		return createDetailEntry("label.edit.pattern", labelEditPattern);
+	}	
+	
+	public static Entry<String, String>  GMFNode_LabelPattern(String labelPattern)
+	{
+		return createDetailEntry("label.pattern", labelPattern);
+	}
+	
+	public static Entry<String, String>  GMFNode_LabelViewPattern(String labelViewPattern)
+	{
+		return createDetailEntry("label.view.pattern", labelViewPattern);
+	}	
+		
+	public static Entry<String, String>  GMFNode_LabelPlacement(String placement) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaLabelPlacement.isLabelPlacement(placement.toLowerCase()))
+			throw new EugeniaAnnotatorException("Error. This \""+placement+"\" this is not a \"placement label\" valid.");	
+		
+		return createDetailEntry("label.placement", placement.toLowerCase());
+	}	
+	
+	public static Entry<String, String>  GMFNode_LabelText(String text)
+	{
+		return createDetailEntry("label.text", text);
+	}
+	
+	public static Entry<String, String>  GMFNode_LabelReadOnly(boolean readOnly)
+	{
+		return createDetailEntry("label.readOnly", String.valueOf(readOnly));
+	}	
+	
+	public static Entry<String, String>  GMFNode_Margin(int margin)
+	{
+		return createDetailEntry("margin", String.valueOf(margin));
+	}
+	
+	public static Entry<String, String>  GMFNode_Phantom(boolean phantom)
+	{
+		return createDetailEntry("phantom", String.valueOf(phantom));
+	}	
+	
+	public static Entry<String, String>  GMFNode_PolygonX(int pointsX[])
+	{
+		return createDetailEntry("polygon.x", generateArrayInt(pointsX));
+	}	
+	
+	public static Entry<String, String>  GMFNode_PolygonY(int pointsY[])
+	{
+		return createDetailEntry("polygon.Y", generateArrayInt(pointsY));
+	}	
+		
+	public static Entry<String, String>  GMFNode_Resizable(boolean resizable)
+	{
+		return createDetailEntry("resizable", String.valueOf(resizable));
+	}
+		
+	public static Entry<String, String>  GMFNode_Size(int x, int y)
+	{
+		return createDetailEntry("size", generateSize(x, y));
+	}	
+	
+	public static Entry<String, String>  GmfNode_SVGUri(String plugin, String path_plugin_to_svg_file)
+	{
+		return createDetailEntry("svg.uri", generateSVGUri(plugin, path_plugin_to_svg_file));
+	}
+	
+	public static Entry<String, String>  GMFNode_ToolDescription(String toolDescription)
+	{
+		return createDetailEntry("tool.description", toolDescription);
+	}		
+
+	public static Entry<String, String>  GMFNode_ToolLargeBundle(String plugin_model_name)
+	{
+		return createDetailEntry("tool.large.bundle", plugin_model_name);
+	}	
+	
+	public static Entry<String, String>  GMFNode_ToolLargePath(String subpath_plugin_model_to_gif_ico)
+	{
+		return createDetailEntry("tool.large.path", subpath_plugin_model_to_gif_ico);
+	}		
+	
+	public static Entry<String, String>  GMFNode_ToolName(String toolName)
+	{
+		return createDetailEntry("tool.name", toolName);
+	}
+	
+	public static Entry<String, String>  GMFNode_ToolSmallBundle(String plugin_model_name)
+	{
+		return createDetailEntry("tool.small.bundle", plugin_model_name);
+	}	
+	
+	public static Entry<String, String>  GMFNode_ToolSmallPath(String subpath_plugin_model_to_gif_ico)
+	{
+		return createDetailEntry("tool.small.path", subpath_plugin_model_to_gif_ico);
+	}
+	
+
+	// GMF Link	(EClass)
+	public static Entry<String, String>  GMFLink_Color(int r, int g, int b)
+	{
+		return createDetailEntry("color", generateRGB(r, g, b));
+	}
+	
+	public static Entry<String, String>  GMFLink_Incoming(boolean incoming)
+	{
+		return createDetailEntry("incoming", String.valueOf(incoming));
+	}
+	
+	public static Entry<String, String>  GMFLink_Label(String eattribute_name)
+	{
+		return createDetailEntry("label", eattribute_name);
+	}	
+	
+	public static Entry<String, String>  GMFLink_LabelParser(String labelParser)
+	{
+		return createDetailEntry("label.parser", labelParser);
+	}	
+	
+	public static Entry<String, String>  GMFLink_LabelText(String text)
+	{
+		return createDetailEntry("label.text", text);
+	}
+	
+	public static Entry<String, String>  GMFLink_Source(String eReferenceNoContainmentName)
+	{
+		return createDetailEntry("source", eReferenceNoContainmentName);
+	}	
+	
+	public static Entry<String, String>  GMFLink_SourceConstraint(String sourceOCLConstraint)
+	{
+		return createDetailEntry("source.constraint", sourceOCLConstraint);
+	}	
+	
+	public static Entry<String, String>  GMFLink_Target(String eReferenceNoContainmentName)
+	{
+		return createDetailEntry("target", eReferenceNoContainmentName);
+	}	
+	
+	public static Entry<String, String>  GMFLink_Style(String style) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaBorderStyle.isBorderStyle(style))
+			throw new EugeniaAnnotatorException("Error. This \""+style+"\" this is not a \"Border Style Valid\" valid.");				
+		return createDetailEntry("style", EugeniaBorderStyle.checkStyle(style));
+	}	
+
+	public static Entry<String, String>  GMFLink_TargetConstraint(String targetOCLConstraint)
+	{
+		return createDetailEntry("target.constraint", targetOCLConstraint);
+	}	
+	
+	public static Entry<String, String>  GMFLink_SourceDecoration(String source_arrow_type) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaArrowType.isArrow(source_arrow_type.toLowerCase()))
+			throw new EugeniaAnnotatorException("Error. This \""+source_arrow_type+"\" this is not a \"Arrow Type\" valid.");	
+	
+		
+		return createDetailEntry("source.decoration", EugeniaArrowType.checkArrow(source_arrow_type.toLowerCase()));
+	}
+	
+	public static Entry<String, String>  GMFLink_TargetDecoration(String target_arrow_type) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaArrowType.isArrow(target_arrow_type))
+			throw new EugeniaAnnotatorException("Error. This \""+target_arrow_type+"\" this is not a \"Arrow Type\" valid.");	
+	
+		
+		return createDetailEntry("target.decoration", EugeniaArrowType.checkArrow(target_arrow_type.toLowerCase()));
+	}
+
+	public static Entry<String, String>  GMFLink_ToolName(String toolName)
+	{
+		return createDetailEntry("tool.name", toolName);
+	}
+	
+	public static Entry<String, String>  GMFLink_ToolDescription(String toolDescription)
+	{
+		return createDetailEntry("tool.description", toolDescription);
+	}	
+	
+	public static Entry<String, String>  GMFLink_ToolLargePath(String subpath_plugin_model_to_gif_ico)
+	{
+		return createDetailEntry("tool.large.path", subpath_plugin_model_to_gif_ico);
+	}
+	
+	public static Entry<String, String>  GMFLink_ToolLargeBundle(String plugin_model_name)
+	{
+		return createDetailEntry("tool.large.bundle", plugin_model_name);
+	}		
+	
+	public static Entry<String, String>  GMFLink_ToolSmallPath(String subpath_plugin_model_to_gif_ico)
+	{
+		return createDetailEntry("tool.small.path", subpath_plugin_model_to_gif_ico);
+	}	
+	
+	public static Entry<String, String>  GMFLink_ToolSmallBundle(String plugin_model_name)
+	{
+		return createDetailEntry("tool.small.bundle", plugin_model_name);
+	}	
+	
+	public static Entry<String, String>  GMFLink_Width(int width)
+	{
+		return createDetailEntry("width", String.valueOf(width));
+	}		
+	
+	// GMF Compartment
+	public static Entry<String, String>  GMFCompartment_Layout(String layoutType) throws EugeniaAnnotatorException
+	{
+		if (!EugeniaLayout.isLayout(layoutType))
+			throw new EugeniaAnnotatorException("Error. This \""+layoutType+"\" this is not a \"Layout\" valid.");	
+	
+		return createDetailEntry("layout", layoutType);
+	}	
+	
+	public static Entry<String, String>  GMFCompartment_Collapsible(boolean collapsible)
+	{
+		return createDetailEntry("collapsible", String.valueOf(collapsible));
+	}
+	
+	// GMF Label
+	public static Entry<String, String>  GMFLabel_EditPattern(String labelEditPattern)
+	{
+		return createDetailEntry("label.edit.pattern", labelEditPattern);
+	}	
+	
+	public static Entry<String, String>  GMFLabel_LabelParser(String labelParser)
+	{
+		return createDetailEntry("label.parser", labelParser);
+	}	
+	
+	public static Entry<String, String>  GMFLabel_LabelPattern(String labelPattern)
+	{
+		return createDetailEntry("label.pattern", labelPattern);
+	}		
+	
+	public static Entry<String, String>  GMFLabel_LabelReadOnly(Boolean readOnly)
+	{
+		return createDetailEntry("label.readOnly", String.valueOf(readOnly));
+	}	
+	
+	public static Entry<String, String>  GMFLabel_LabelText(String text)
+	{
+		return createDetailEntry("label.text", text);
+	}		
+	
+	public static Entry<String, String>  GMFLabel_LabelViewPattern(String labelViewPattern)
+	{
+		return createDetailEntry("label.view.pattern", labelViewPattern);
+	}		
+}

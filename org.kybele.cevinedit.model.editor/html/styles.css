@@ -1,0 +1,36 @@
+.container {
+	width: 300px;
+}
+
+body {
+	color: #000;
+	font: 14px "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-align: justify;
+	padding: 5px;
+}
+
+h1 {
+	color: #000;
+	font: italic bold 40px Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif;
+	text-align: center;
+}
+
+h2 {
+	color: #000;
+	font: italic bold 30px Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif;
+	text-align: left;
+}
+
+#box { width: 300px; height: 200px; background: #fff; display: none; float: left; }
+
+#poptext { width: 50px; background: #FF0000; height: 50px; float: left; text-align: center;}
+
+
+    
+
+
+
+
+

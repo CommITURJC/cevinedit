@@ -1,0 +1,75 @@
+package org.cevinedit.editor.view.constants;
+
+public class CevineditImages 
+{
+	
+	public static String getURLImage(String element)
+	{
+		if (element.equals(CevineditToolsLabels.BACKGROUND_COLOR))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.BORDER_COLOR))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.BORDER_TEXTURE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.BORDER_WIDTH))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.BRIGHTNESS))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.NODE_FIGURE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.LINK_FIGURE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.RESIZABLE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.LABEL_PLACEMENT))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.LABEL_FONTSTYLE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.LABEL))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.COLOR))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.SOURCE_DECORATION))
+		{
+			return ".png";
+		}	
+		if (element.equals(CevineditToolsLabels.TARGET_DECORATION))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.TEXTURE))
+		{
+			return ".png";
+		}
+		if (element.equals(CevineditToolsLabels.WIDTH))
+		{
+			return ".png";
+		}
+		return "";
+	}
+	
+}

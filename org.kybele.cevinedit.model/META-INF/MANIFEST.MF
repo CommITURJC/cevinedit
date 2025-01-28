@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Eclipse-BundleShape: dir 
+Bundle-ManifestVersion: 2
+Bundle-Name: CEViNEdit - v0.0.15.a - Model Plug-In
+Bundle-SymbolicName: org.kybele.cevinedit.model;singleton:=true
+Bundle-Version: 0.0.15.a
+Bundle-ClassPath: .,
+ model/
+Bundle-Vendor: Grupo de Investigación Kybele
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: cevinedit,
+ cevinedit.impl,
+ cevinedit.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

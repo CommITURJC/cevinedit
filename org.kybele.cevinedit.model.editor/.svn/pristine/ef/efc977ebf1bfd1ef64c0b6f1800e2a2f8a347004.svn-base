@@ -1,0 +1,68 @@
+package org.cevinedit.editor.view.listeners;
+
+import org.cevinedit.editor.view.constants.CevineditToolsLabels;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Text;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class CevineditEditorToolsModifyListener implements ModifyListener {
+	protected CevineditEditor _editor = null;
+	protected String _property = null;
+	public CevineditEditorToolsModifyListener(CevineditEditor editor, String property)
+	{
+		_editor = editor;
+		_property = property;
+	}
+	
+	public static CevineditEditorToolsModifyListener i(CevineditEditor editor, String property)
+	{
+		return new CevineditEditorToolsModifyListener(editor, property);
+	}
+
+	@Override
+	public void modifyText(ModifyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() instanceof Text)
+		{
+			if (_property.equals("sizeX"))
+			{				
+				String size = _editor.getActualPersonalization().get(CevineditToolsLabels.SIZE);
+				if (size.equals("null"))
+				{
+					size = "0,0";
+				}
+				String parts[] = size.split(",");
+				String toSave = ((Text)e.getSource()).getText() + "," + parts[1];
+				_editor.getActualPersonalization().remove(CevineditToolsLabels.SIZE);
+				_editor.getActualPersonalization().put(CevineditToolsLabels.SIZE, toSave);				
+			}
+			else if (_property.equals("sizeY"))
+			{
+				String size = _editor.getActualPersonalization().get(CevineditToolsLabels.SIZE);
+				if (size.equals("null"))
+				{
+					size = "0,0";
+				}
+				String parts[] = size.split(",");
+				String toSave = parts[0] + "," + ((Text)e.getSource()).getText();
+				_editor.getActualPersonalization().remove(CevineditToolsLabels.SIZE);
+				_editor.getActualPersonalization().put(CevineditToolsLabels.SIZE, toSave);
+			}
+			else
+			{
+				_editor.getActualPersonalization().remove(_property);
+				_editor.getActualPersonalization().put(_property, ((Text)e.getSource()).getText());
+			}
+
+		}
+		if (e.getSource() instanceof Combo)
+		{
+			_editor.getActualPersonalization().remove(_property);
+			_editor.getActualPersonalization().put(_property, ((Combo)e.getSource()).getText());
+
+		}
+	}
+}

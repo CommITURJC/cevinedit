@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.inria.atlanmod.notationEvaluation.mapping/src"
+    modelPluginID="fr.inria.atlanmod.notationEvaluation.mapping" modelName="Mapping"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>mapping.ecore</foreignModel>
+  <genPackages prefix="Mapping" disposableProviderFactory="true" ecorePackage="mapping.ecore#/">
+    <genClasses ecoreClass="mapping.ecore#//MappingContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingContainer/nodeMappings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingContainer/relationMappings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingContainer/navigationMappings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingContainer/extensionMappings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingContainer/hierarchicalMappings"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//MappingElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//MappingElement/ID"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mapping.ecore#//DiagramElementMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//DiagramElementMapping/abstractElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//DiagramElementMapping/abstractContainingClass"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//NodeMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//NodeMapping/node"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//RelationMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//RelationMapping/relation"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//ExtensionMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//ExtensionMapping/super"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//ExtensionMapping/sub"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//NavigationMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//NavigationMapping/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//NavigationMapping/to"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//NotationElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//NotationElement/diagram"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//NotationElement/element"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//HierarchicalMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//HierarchicalMapping/superElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//HierarchicalMapping/subElement"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Notation" disposableProviderFactory="true" ecorePackage="notation.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//Color">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/WHITE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/BLACK"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/LIGHT_GRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/GRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/DARK_GRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/RED"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/ORANGE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/YELLOW"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/GREEN"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/LIGHT_GREEN"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/DARK_GREEN"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/CYAN"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/LIGHT_BLUE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/BLUE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Color/DARK_BLUE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//Orientation">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Orientation/HORIZONTAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Orientation/VERTICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Orientation/LEFT_DIAGONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Orientation/RIGHT_DIAGONAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//LineTextureType">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/INVISIBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/SOLID"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/DASH"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/DOT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/DASHDOT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/DASHDOTDOT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//LineTextureType/DOUBLE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//FillTextureType">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/STRIP"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/DASH"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/DOT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/DASHDOT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//FillTextureType/DASHDOTDOT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//DefinitionType">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//DefinitionType/GRAPHICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//DefinitionType/TEXTUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//DefinitionType/HYBRID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//Layout">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Layout/HORIZONTAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Layout/VERTICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//Layout/UNKNOWN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//IconType">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//IconType/CROSS"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//IconType/ARROW"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//IconType/LETTER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="notation.ecore#//AudienceType">
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//AudienceType/EXPERT"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//AudienceType/BEGINNER"/>
+      <genEnumLiterals ecoreEnumLiteral="notation.ecore#//AudienceType/BOTH"/>
+    </genEnums>
+    <genClasses ecoreClass="notation.ecore#//NotationDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//NotationDefinition/Type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//NotationDefinition/diagrams"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//DiagramDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//DiagramDefinition/Legend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//DiagramDefinition/Level"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//DiagramDefinition/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//DiagramDefinition/allowChunks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//DiagramDefinition/targetedAudience"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//IDElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IDElement/ID"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="notation.ecore#//DiagramElement"/>
+    <genClasses ecoreClass="notation.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Node/graphicalElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="notation.ecore#//Relation"/>
+    <genClasses ecoreClass="notation.ecore#//Compartment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Compartment/layout"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference notation.ecore#//Compartment/nodeType"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Link">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Link/graphicalElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="notation.ecore#//GraphicalElement"/>
+    <genClasses ecoreClass="notation.ecore#//SyntaxOf">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference notation.ecore#//SyntaxOf/referredElement"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Icon">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Icon/style"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Icon/iconType"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Image/path"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Image/approximateRepresentation"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Composite">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Composite/layout"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Composite/subElements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference notation.ecore#//Composite/primaryShape"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Label">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Label/textStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Label/text"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Line">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Line/lineStyle"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="notation.ecore#//Figure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Figure/figureStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Figure/borderStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Figure/figureContainment"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//FigureContainment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureContainment/layout"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//FigureContainment/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Rectangle"/>
+    <genClasses ecoreClass="notation.ecore#//Roundtangle"/>
+    <genClasses ecoreClass="notation.ecore#//Square"/>
+    <genClasses ecoreClass="notation.ecore#//Diamond"/>
+    <genClasses ecoreClass="notation.ecore#//Triangle"/>
+    <genClasses ecoreClass="notation.ecore#//Circle"/>
+    <genClasses ecoreClass="notation.ecore#//Cylinder"/>
+    <genClasses ecoreClass="notation.ecore#//Cube"/>
+    <genClasses ecoreClass="notation.ecore#//Polyline">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//Polyline/points"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//Point">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Point/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//Point/y"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//TextualContainment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference notation.ecore#//TextualContainment/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextualContainment/layout"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="notation.ecore#//TextualElement"/>
+    <genClasses ecoreClass="notation.ecore#//Token"/>
+    <genClasses ecoreClass="notation.ecore#//Keyword"/>
+    <genClasses image="false" ecoreClass="notation.ecore#//Value"/>
+    <genClasses ecoreClass="notation.ecore#//AttributeValue"/>
+    <genClasses ecoreClass="notation.ecore#//ReferenceValue"/>
+    <genClasses image="false" ecoreClass="notation.ecore#//Style"/>
+    <genClasses ecoreClass="notation.ecore#//LineStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/thickness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/orientation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/brightness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//LineStyle/texture"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//FigureStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/orientation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/brightness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/fillColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/fillTexture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/fillOrientation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//FigureStyle/fillTextureColor"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//IconStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IconStyle/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IconStyle/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IconStyle/orientation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IconStyle/brightness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//IconStyle/color"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//BorderStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//BorderStyle/thickness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//BorderStyle/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//BorderStyle/texture"/>
+    </genClasses>
+    <genClasses ecoreClass="notation.ecore#//TextStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/fontName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/bold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/italic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/underlined"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute notation.ecore#//TextStyle/fontColor"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

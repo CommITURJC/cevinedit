@@ -1,0 +1,26 @@
+package org.cevinedit.core.eugenia;
+
+import org.cevinedit.core.tools.CevineditEcoreTools;
+import org.eclipse.emf.ecore.resource.Resource;
+
+public class CevEugAnnotator 
+{
+	protected Resource _ecore = null;
+	protected String _path2Ecore = null;
+	
+	public CevEugAnnotator(String path2Ecore)
+	{
+		_path2Ecore = path2Ecore;
+		_ecore = CevineditEcoreTools.loadEcore(_path2Ecore);
+	}
+	
+	public static CevEugAnnotator i(String path2Ecore)
+	{
+		return new CevEugAnnotator(path2Ecore);
+	}
+	
+	public void saveEcore()
+	{
+		CevineditEcoreTools.saveResource(_ecore);
+	}
+}

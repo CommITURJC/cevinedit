@@ -1,0 +1,24 @@
+package org.cevinedit.core.eugenia;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class EugeniaLabelParser {
+	
+	public static String LABEL_PARSER_MESSAGEFORMAT = "MessageFormat";
+	
+	public static List<String> list()
+	{
+		LinkedList<String> parsers = new LinkedList<>();
+		
+		parsers.add(LABEL_PARSER_MESSAGEFORMAT);
+
+		
+		return parsers;
+	}
+	
+	public static boolean isParser(String style)
+	{
+		return list().contains(style);
+	}
+}

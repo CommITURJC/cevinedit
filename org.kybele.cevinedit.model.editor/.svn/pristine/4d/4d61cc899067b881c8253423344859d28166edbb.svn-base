@@ -1,0 +1,54 @@
+package org.cevinedit.core.eugenia;
+
+import java.util.Hashtable;
+import java.util.Map.Entry;
+
+import org.cevinedit.core.tools.CevineditEcoreTools;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EObject;
+
+public class EugeniaEcoreAnnotator 
+{
+	public static void setProperties(EObject _eobject, Hashtable<String, String> _properties)
+	{
+		EModelElement m = CevineditEcoreTools.EObject2EModelElement(_eobject);
+		
+		String find = "";
+		if (CevineditEcoreTools.isEClass(_eobject))
+			find = "gmf.node";
+		
+		if (CevineditEcoreTools.isEReferenceContainement(_eobject))
+			find = "gmf.compartment";
+		
+		if (CevineditEcoreTools.isEReferenceNoContainement(_eobject))
+			find = "gmf.link";
+		
+		if (CevineditEcoreTools.isEAttribute(_eobject))
+			find = "gmf.label";
+		
+		EAnnotation annotation = m.getEAnnotation(find);
+		
+		if (annotation != null)
+		{
+			annotation.getDetails().clear();
+			
+			annotation.getDetails().add((Entry<String, String>) EugeniaAnnotator.GMFLabel_LabelParser(""));
+		}
+		else
+		{
+			EAnnotation _annotation = null;
+			try {
+				_annotation = EugeniaAnnotator.annotateEObjectAsGMFNode(_eobject);
+			} catch (EugeniaAnnotatorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			m.getEAnnotations().add(_annotation);
+			
+			//_annotation.getDetails().add(e)
+		}
+		
+		
+	}
+}

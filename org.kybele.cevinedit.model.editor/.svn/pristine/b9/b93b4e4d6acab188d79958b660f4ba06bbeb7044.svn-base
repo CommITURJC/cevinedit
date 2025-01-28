@@ -1,0 +1,212 @@
+package org.cevinedit.editor.view.listeners;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import org.cevinedit.config.CevineditConfig;
+import org.cevinedit.core.tools.CevineditProjectTools;
+import org.cevinedit.editor.view.constants.CevineditSashConstants;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Shell;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class CevineditEditorExportGMFPlugins implements SelectionListener {
+	protected CevineditEditor _editor = null;
+	protected Resource _model = null;
+	public CevineditEditorExportGMFPlugins(CevineditEditor editor)
+	{
+		_editor = editor;
+		_model = editor.getCevineditModelResource();
+	}
+	
+	public static CevineditEditorExportGMFPlugins i(CevineditEditor editor)
+	{
+		return new CevineditEditorExportGMFPlugins(editor);
+	}
+	
+	@Override
+	public void widgetSelected(SelectionEvent e) {
+		// TODO Auto-generated method stub
+		Shell _shell = _editor.getMainLayer().getShell();
+		
+        DirectoryDialog dlg = new DirectoryDialog(_shell);
+
+        // Set the initial filter path according
+        // to anything they've selected or typed in
+        //dlg.setFilterPath(text.getText());
+
+        // Change the title bar text
+        dlg.setText("SWT's DirectoryDialog");
+
+        // Customizable message displayed in the dialog
+        dlg.setMessage("Select a directory");
+
+        // Calling open() will open and run the dialog.
+        // It will return the selected directory, or
+        // null if user cancels
+        String dir = dlg.open();
+        if (dir != null) {
+          // Set the text box to the new selection
+
+          String actualProjectName = CevineditProjectTools.getActualWorkingProjectEditor(_editor).getName();
+  		IProject newProject = CevineditProjectTools.getWorkspaceRoot().getProject(actualProjectName+ "_gmf/");
+  		  
+  		
+
+  		String sourceFolder = newProject.getLocationURI().getPath().replace('/', '\\').substring(1);
+  		String targetFolder = dir + "/" + newProject.getName()+"/";
+    	File srcFolder = new File(sourceFolder);
+    	File destFolder = new File(targetFolder);
+ 
+    	//make sure source exists
+    	if(srcFolder.exists()){ 
+           try{
+        	copyFolder(srcFolder,destFolder);
+           }catch(IOException ex){
+        	ex.printStackTrace();
+        	//error, just exit
+                System.exit(0);
+           }
+        }
+    	IProject newProjectDiagram = CevineditProjectTools.getWorkspaceRoot().getProject(actualProjectName+ "_gmf.diagram/");
+
+  		sourceFolder = newProjectDiagram.getLocationURI().getPath().replace('/', '\\').substring(1);
+  		targetFolder = dir + "/" + newProjectDiagram.getName()+"/";
+    	srcFolder = new File(sourceFolder);
+    	destFolder = new File(targetFolder);
+ 
+    	//make sure source exists
+    	if(srcFolder.exists()){ 
+           try{
+        	copyFolder(srcFolder,destFolder);
+           }catch(IOException ex){
+        	ex.printStackTrace();
+        	//error, just exit
+                System.exit(0);
+           }
+        } 
+  		IProject newProjectEdit = CevineditProjectTools.getWorkspaceRoot().getProject(actualProjectName+ "_gmf.edit/");
+
+  		sourceFolder = newProjectEdit.getLocationURI().getPath().replace('/', '\\').substring(1);
+  		targetFolder = dir + "/" + newProjectEdit.getName()+"/";
+    	srcFolder = new File(sourceFolder);
+    	destFolder = new File(targetFolder);
+ 
+    	//make sure source exists
+    	if(srcFolder.exists()){ 
+           try{
+        	copyFolder(srcFolder,destFolder);
+           }catch(IOException ex){
+        	ex.printStackTrace();
+        	//error, just exit
+                System.exit(0);
+           }
+        }
+  		IProject newProjectEditor = CevineditProjectTools.getWorkspaceRoot().getProject(actualProjectName+ "_gmf.editor/");
+
+  		sourceFolder = newProjectEditor.getLocationURI().getPath().replace('/', '\\').substring(1);
+  		targetFolder = dir + "/" + newProjectEditor.getName()+"/";
+    	srcFolder = new File(sourceFolder);
+    	destFolder = new File(targetFolder);
+ 
+    	//make sure source exists
+    	if(srcFolder.exists()){ 
+           try{
+        	copyFolder(srcFolder,destFolder);
+           }catch(IOException ex){
+        	ex.printStackTrace();
+        	//error, just exit
+                System.exit(0);
+           }
+        }
+  		IProject newProjectTest = CevineditProjectTools.getWorkspaceRoot().getProject(actualProjectName+ "_gmf.tests/");    	
+  		
+  		sourceFolder = newProjectTest.getLocationURI().getPath().replace('/', '\\').substring(1);
+  		targetFolder = dir + "/" + newProjectTest.getName()+"/";
+    	srcFolder = new File(sourceFolder);
+    	destFolder = new File(targetFolder);
+ 
+    	//make sure source exists
+    	if(srcFolder.exists()){ 
+           try{
+        	copyFolder(srcFolder,destFolder);
+           }catch(IOException ex){
+        	ex.printStackTrace();
+        	//error, just exit
+                System.exit(0);
+           }
+        }    	
+        }
+	}
+
+ 
+    public static void copyFolder(File src, File dest)
+    	throws IOException{
+ 
+    	if(src.isDirectory()){
+ 
+    		//if directory not exists, create it
+    		if(!dest.exists()){
+    		   dest.mkdir();
+    		   System.out.println("Directory copied from " 
+                              + src + "  to " + dest);
+    		}
+ 
+    		//list all the directory contents
+    		String files[] = src.list();
+ 
+    		for (String file : files) {
+    		   //construct the src and dest file structure
+    		   File srcFile = new File(src, file);
+    		   File destFile = new File(dest, file);
+    		   //recursive copy
+    		   copyFolder(srcFile,destFile);
+    		}
+ 
+    	}else{
+    		//if file, then copy it
+    		//Use bytes stream to support all file types
+    		InputStream in = new FileInputStream(src);
+    	        OutputStream out = new FileOutputStream(dest); 
+ 
+    	        byte[] buffer = new byte[1024];
+ 
+    	        int length;
+    	        //copy the file content in bytes 
+    	        while ((length = in.read(buffer)) > 0){
+    	    	   out.write(buffer, 0, length);
+    	        }
+ 
+    	        in.close();
+    	        out.close();
+    	        System.out.println("File copied from " + src + " to " + dest);
+    	}
+    }
+	@Override
+	public void widgetDefaultSelected(SelectionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

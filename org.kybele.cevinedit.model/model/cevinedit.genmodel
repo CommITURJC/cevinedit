@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/org.cevinedit/src" modelPluginID="org.cevinedit"
+    modelName="Cevinedit" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>cevinedit.ecore</foreignModel>
+  <genPackages prefix="Cevinedit" disposableProviderFactory="true" ecorePackage="cevinedit.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//Color">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Black"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Blue"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Cyan"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Gray"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Green"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Orange"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Red"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/White"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Color/Yellow"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//Texture">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Texture/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Texture/Dash"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Texture/Dot"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Texture/Solid"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//Brightness">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Brightness/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Brightness/Dark"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Brightness/Light"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//FontStyle">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//FontStyle/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//FontStyle/Bold"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//FontStyle/Italic"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//NodeFigure">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Ellipse"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Polygon"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Rectangle"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Rounded"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/SVG"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//NodeFigure/Image"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//LinkFigure">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/Arrow"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/ClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/FilledClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/Rhomb"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/FilledRhomb"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/Square"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/FilledSquare"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LinkFigure/None"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//Placement">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Placement/External"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Placement/Internal"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//Placement/None"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cevinedit.ecore#//LayoutCompartment">
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LayoutCompartment/Free"/>
+      <genEnumLiterals ecoreEnumLiteral="cevinedit.ecore#//LayoutCompartment/List"/>
+    </genEnums>
+    <genClasses ecoreClass="cevinedit.ecore#//CEViNEditRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cevinedit.ecore#//CEViNEditRoot/diagram"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//CEViNEditRoot/sourceMM"/>
+    </genClasses>
+    <genClasses ecoreClass="cevinedit.ecore#//Diagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cevinedit.ecore#//Diagram/containsElem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Diagram/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Diagram/modelExtension"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="cevinedit.ecore#//PersonalizedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//PersonalizedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//PersonalizedElement/icon"/>
+    </genClasses>
+    <genClasses ecoreClass="cevinedit.ecore#//NodeEClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/borderColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/borderTexture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/borderWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/brightness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/figure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/resizable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/labelPlacement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/labelFontStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/imagePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//NodeEClass/listPointsPolygon"/>
+    </genClasses>
+    <genClasses ecoreClass="cevinedit.ecore#//LinkEClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//LinkEClass/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//LinkEClass/target"/>
+    </genClasses>
+    <genClasses ecoreClass="cevinedit.ecore#//CompartmentEReferenceCont">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//CompartmentEReferenceCont/collapsible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//CompartmentEReferenceCont/layout"/>
+    </genClasses>
+    <genClasses ecoreClass="cevinedit.ecore#//AffixedEReferenceCont"/>
+    <genClasses ecoreClass="cevinedit.ecore#//LabelEAttribute"/>
+    <genClasses ecoreClass="cevinedit.ecore#//LinkEReferenceNonCont"/>
+    <genClasses image="false" ecoreClass="cevinedit.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/brightness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/labelFontStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/sourceDecoration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/targetDecoration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/texture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cevinedit.ecore#//Link/label"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mapping" nsURI="http://inria.atlanmod.fr/notationEvaluation/mapping"
+    nsPrefix="mapping">
+  <eClassifiers xsi:type="ecore:EClass" name="MappingContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeMappings" upperBound="-1"
+        eType="#//NodeMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationMappings" upperBound="-1"
+        eType="#//RelationMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="navigationMappings" upperBound="-1"
+        eType="#//NavigationMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionMappings" upperBound="-1"
+        eType="#//ExtensionMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hierarchicalMappings" upperBound="-1"
+        eType="#//HierarchicalMapping" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MappingElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DiagramElementMapping" abstract="true"
+      eSuperTypes="#//MappingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="abstractElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="abstractContainingClass"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeMapping" eSuperTypes="#//DiagramElementMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass notation.ecore#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationMapping" eSuperTypes="#//DiagramElementMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" eType="ecore:EClass notation.ecore#//Relation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtensionMapping" eSuperTypes="#//MappingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="super" eType="#//DiagramElementMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub" eType="#//DiagramElementMapping"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NavigationMapping" eSuperTypes="#//MappingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="ecore:EClass notation.ecore#//DiagramElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass notation.ecore#//DiagramElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotationElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagram" eType="ecore:EClass notation.ecore#//DiagramDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="ecore:EClass notation.ecore#//DiagramElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HierarchicalMapping" eSuperTypes="#//MappingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superElement" eType="ecore:EClass notation.ecore#//DiagramElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subElement" eType="ecore:EClass notation.ecore#//DiagramDefinition"/>
+  </eClassifiers>
+</ecore:EPackage>

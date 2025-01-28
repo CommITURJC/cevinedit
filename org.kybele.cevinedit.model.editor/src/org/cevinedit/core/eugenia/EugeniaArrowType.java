@@ -1,0 +1,39 @@
+package org.cevinedit.core.eugenia;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class EugeniaArrowType {
+	public static String ARROW_TYPE_NONE = "none";
+	public static String ARROW_TYPE_ARROW = "romb";
+	public static String ARROW_TYPE_RHOMB = "rhomb";
+	public static String ARROW_TYPE_SQUARE = "square";
+	public static String ARROW_TYPE_FILLEDSQUARE = "filledsquare";	
+	public static String ARROW_TYPE_CLOSEDARROW = "closedarrow";		
+	public static String ARROW_TYPE_FILLEDCLOSEARROW = "filledclosedarrow";	
+	public static String ARROW_TYPE_DEFAULT = "default";
+	public static List<String> list()
+	{
+		LinkedList<String> arrows = new LinkedList<>();
+		
+		arrows.add(ARROW_TYPE_NONE);
+		arrows.add(ARROW_TYPE_ARROW);
+		arrows.add(ARROW_TYPE_RHOMB);
+		arrows.add(ARROW_TYPE_SQUARE);
+		arrows.add(ARROW_TYPE_FILLEDSQUARE);
+		arrows.add(ARROW_TYPE_CLOSEDARROW);
+		arrows.add(ARROW_TYPE_FILLEDCLOSEARROW);
+		arrows.add(ARROW_TYPE_DEFAULT);
+
+		return arrows;
+	}
+	
+	public static boolean isArrow(String style)
+	{
+		return list().contains(style);
+	}
+
+	public static String checkArrow(String source_arrow_type) {
+		return (source_arrow_type.equals(ARROW_TYPE_DEFAULT)) ? ARROW_TYPE_NONE : source_arrow_type;
+	}
+}

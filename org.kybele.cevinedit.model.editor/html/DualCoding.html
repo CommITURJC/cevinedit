@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Texture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<script type="text/javascript">
+function toggleSpecific(elementid) {
+        var node = document.getElementById(elementid);
+        if(node.style.display == '') {
+          node.style.display='none';
+        }
+        else {
+          node.style.display = '';
+        }
+      }
+</script>
+<div class="container">
+<!-- Content -->
+<h1>Texture</h1>
+<img onclick="toggleSpecific('hideimg');" src="img/textures1.jpg">
+<div class="hide" id="hideimg">Texture or pattern is a complex visual variable, combining size, brightness, color, shape and orientation. Defined narrowly, texture or spacing refers to the <strong>spatial frequency of components of a pattern</strong>. It is used for nominal and ordered attributes of areas and lines. Texture has an almost <strong>unlimited length</strong> and can be used effectively to denote the style and thickness of <strong>shape borders</strong> and the <strong>lines of links</strong>.</div> 
+<img onclick="toggleSpecific('hideimg');" src="img/textures2.jpg">
+
+<table>
+<tr><td><a href="#" onclick="toggleSpecific('hidecapacity');"><strong>Texture capacity = 2 - 5</strong></a>
+ <div class="hide" id="hidecapacity" style="display:none">The capacity of a visual variable is defined as the number of different perceptible steps by human mind. The number of used values on the visual notation do not should be greater than to the visual variable capacity.</div></td></tr>
+</table>
+
+<p><em><strong>Texture is:</strong><em><p/>
+<table>
+<tr><td><a href="#" onclick="toggleSpecific('hide1');"><strong>Selective</strong></a>
+<div class="hide" id="hide1" style="display:none">Is a change in this variable enough to allow us to select it from a group?</div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide2');"><strong>Associative</strong></a>
+<div class="hide" id="hide2" style="display:none">Is a change in this variable enough to allow us to perceive them as a group?</div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide3');"><strong>Lenght</strong></a>
+<div class="hide" id="hide3" style="display:none">Across how many changes in this variable are distinctions perceptible?</div></td></tr>
+</table>
+
+</div>
+</body>
+</html>

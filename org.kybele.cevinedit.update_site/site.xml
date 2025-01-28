@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.kybele.cevinedit.features_0.0.15.a.jar" id="org.kybele.cevinedit.features" version="0.0.15.a">
+      <category name="org.kybele.cevinedit.update_site.main_category"/>
+   </feature>
+   <category-def name="org.kybele.cevinedit.update_site.main_category" label="CEViNEdit Editor"/>
+</site>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="es.kybele.cevinedit.translators.cevinedit2notation.contribution1"
+            nameFilter="*.cevinedit"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="es.kybele.cevinedit.translators.cevinedit2notation.menu1"
+               label="CEViNEdit Tools"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="es.kybele.cevinedit.translators.cevinedit2notation.popup.actions.CEViNEdit2NotationEvaluationTranslator"
+               enablesFor="1"
+               id="es.kybele.cevinedit.translators.cevinedit2notation.newAction"
+               label="Create Notation and Mapping Model"
+               menubarPath="es.kybele.cevinedit.translators.cevinedit2notation.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

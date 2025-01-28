@@ -1,0 +1,13 @@
+package org.cevinedit.editor.view.constants;
+
+public class CevineditSashConstants {
+
+	public static int[] TwoEditors = new int[] { 0, 50, 50, 0, 0};
+	public static int[] TwoEditorsAndTools = new int[]{0,32,40,24,0};
+	public static int[] Reset = new int[]{0,40,38,20,1};
+	public static int[] TwoEditorsToolsAndHelp = new int[]{0,25,25,19,31};
+	public static int[] SelectEcoreView = new int[]{100,0,0,0,0};	
+	public static int[] ShowOnlySelectMetamodel = new int []{0,100};
+	public static int[] ShowEditorTools = new int []{8,92};
+	
+}

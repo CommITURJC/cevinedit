@@ -1,0 +1,286 @@
+package org.cevinedit.editor.view.listeners;
+
+
+
+import java.io.BufferedReader;
+import java.io.Console;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.net.JarURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.cevinedit.editor.view.constants.CevineditHtmlHelpPages;
+import org.cevinedit.editor.view.constants.CevineditToolsLabels;
+import org.cevinedit.editor.view.constants.CevineditSashConstants;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.util.BundleUtility;
+import org.osgi.framework.Bundle;
+
+import cevinedit.presentation.CevineditEditor;
+
+public class BrowserManager implements FocusListener 
+{
+
+    private static java.net.URI locateFile(String bundle, String fullPath) {
+    	  try {
+    	    URL url = FileLocator.find(Platform.getBundle(bundle), new Path(fullPath), null);
+    	    if(url != null)
+    	      return FileLocator.resolve(url).toURI();
+    	  } catch (Exception e) {}
+    	    return null;
+    	  
+    	}
+	
+	public static String WEBPAGES_DIRECTORY = "/html/";
+	public static String PLATFORM_PLUGIN = "platform:/plugin/";
+	public static String PLATFORM_RESOURCE = "platform:/resource/";	
+	protected CevineditEditor _editor = null;
+	public BrowserManager(CevineditEditor editor)
+	{
+		_editor = editor;
+	}
+	
+	public static URL getURL(String page)
+	{
+		Bundle bundle = Platform.getBundle("org.kybele.cevinedit.model.editor");
+		String path = null;
+		if (!BundleUtility.isReady(bundle)) 
+		{
+			path =  null;
+		}
+		String loc = bundle.getLocation();
+		
+		
+		
+		String path_html = WEBPAGES_DIRECTORY + page;
+
+		path = loc.substring(loc.indexOf("file:"), loc.length()).concat(path_html);				
+		
+		URL resource =  bundle.getResource(path_html);
+		URL resource_file = null;
+		try {
+			resource_file = org.eclipse.core.runtime.FileLocator.toFileURL(resource);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return resource_file;
+		
+	}
+	
+	public static String generateURL(String page)
+	{
+		Bundle bundle = Platform.getBundle("org.kybele.cevinedit.model.editor");
+		String path = null;
+		if (!BundleUtility.isReady(bundle)) 
+		{
+			path =  null;
+		}
+		String loc = bundle.getLocation();
+		
+		
+		
+		String path_html = WEBPAGES_DIRECTORY + page;
+
+		path = loc.substring(loc.indexOf("file:"), loc.length()).concat(path_html);				
+		
+		URL resource =  bundle.getResource(path_html);
+		URL resource_file = null;
+		try {
+			resource_file = org.eclipse.core.runtime.FileLocator.toFileURL(resource);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return resource_file.toString().substring(6);
+		
+	}
+	
+	public static InputStream getStream(String file)
+	{
+		return BrowserManager.class.getResourceAsStream(file);
+	}
+	private static String getStringFromInputStream(InputStream is) {
+		 
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+ 
+		String line;
+		try {
+ 
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+ 
+		return sb.toString();
+ 
+	}
+	public static void setData(Browser browser, InputStream data)
+	{
+		String str = getStringFromInputStream(data);
+		
+		browser.setText(str);
+	}
+	
+	public static void setBrowserString(Browser browser, String data)
+	{
+		browser.setText(data);
+	}
+	public static void setURL(Browser broser, String url)
+	{
+		broser.setUrl(url);
+	}
+
+	public boolean eq(String a, String b)
+	{
+		return a.equals(b);
+	}
+	
+	public String getHtmlPageByControlName(String name)
+	{
+		String page_html = "index.html";
+		if (eq(name, CevineditToolsLabels.BACKGROUND_COLOR) || eq(name, CevineditToolsLabels.BORDER_COLOR) || eq(name, CevineditToolsLabels.COLOR))
+		{
+			page_html =  CevineditHtmlHelpPages.COLOR;
+		}
+		if (eq(name, CevineditToolsLabels.BORDER_WIDTH) || eq(name, CevineditToolsLabels.WIDTH))
+		{
+			page_html = CevineditHtmlHelpPages.WIDTH;
+		}
+		if (eq(name, CevineditToolsLabels.LABEL_FONTSTYLE))
+		{
+			page_html = CevineditHtmlHelpPages.FONTSTYLE;
+		}
+		if (eq(name, CevineditToolsLabels.BORDER_TEXTURE) || eq(name, CevineditToolsLabels.TEXTURE))
+		{
+			page_html = CevineditHtmlHelpPages.TEXTURE;
+		}		
+		if(eq(name, CevineditToolsLabels.LABEL_PLACEMENT))
+		{
+			page_html = CevineditHtmlHelpPages.PLACEMENT;
+		}
+		if(eq(name, CevineditToolsLabels.BRIGHTNESS))
+		{
+			page_html = CevineditHtmlHelpPages.BRIGHTNESS;
+		}
+		if(eq(name, CevineditToolsLabels.LABEL))
+		{
+			page_html = CevineditHtmlHelpPages.LABEL;
+		}
+		if(eq(name, CevineditToolsLabels.NODE_FIGURE))
+		{
+			page_html = CevineditHtmlHelpPages.NODE_FIGURE;
+		}
+		if(eq(name, CevineditToolsLabels.TARGET_DECORATION) || eq(name, CevineditToolsLabels.SOURCE_DECORATION))
+		{
+			page_html = CevineditHtmlHelpPages.LINK_FIGURE;
+		}	
+		if(eq(name, CevineditToolsLabels.SIZE) || eq(name, CevineditToolsLabels.RESIZABLE))
+		{
+			page_html = CevineditHtmlHelpPages.SIZE;
+		}
+		
+		return page_html;
+	}
+	
+	public String getNameForControl(Control c)
+	{
+		if (c instanceof Text)
+		{
+			Text t = (Text) c;
+			Composite parent = t.getParent();
+			Control firstChildren = parent.getChildren()[0];
+			Label l = (Label) firstChildren;
+			
+			return l.getText();
+		}
+		
+		if (c instanceof Combo)
+		{
+			Combo combo = (Combo) c;
+			Composite parent = combo.getParent();
+			Control firstChildren = parent.getChildren()[0];
+			Label l = (Label) firstChildren;
+			
+			return l.getText();
+		}
+		
+		return "";
+	}
+	
+	public String getPageHTMLForControl(Control c)
+	{
+		return getHtmlPageByControlName(getNameForControl(c));
+	}
+	
+	@Override
+	public void focusGained(FocusEvent e) {
+		
+		if (e.getSource() instanceof Control)
+		{
+			
+			if (this._editor.isHelpActivate())
+			{
+				Control c = (Control) e.getSource();
+
+	
+				String page = getPageHTMLForControl(c);
+				InputStream in = null;
+				URL url2 = getURL(page);
+
+
+				try
+				{
+					
+					this._editor.getBrowser().setUrl(generateURL(page));
+
+				}
+				catch (Exception ex)
+				{
+					MessageBox box = new MessageBox(this._editor.getSite().getShell());
+					box.setText("ERROR " + ex.getMessage());
+					box.open();
+				}
+
+				SashManager.setWeights(_editor.getMainLayer(), CevineditSashConstants.TwoEditorsToolsAndHelp);
+			}
+		}		
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		
+	}
+}
+

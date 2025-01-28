@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Color</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<script type="text/javascript">
+function toggleSpecific(elementid) {
+		event.preventDefault();
+        var node = document.getElementById(elementid);
+        if(node.style.display == '') {
+          node.style.display='none';
+        }
+        else {
+          node.style.display = '';
+        }
+      }
+</script>
+<div class="container">
+<!-- Content -->
+<h1>Color</h1>
+<img onclick="toggleSpecific('hideimg');" src="img/colors1.jpg">
+<div class="hide" id="hideimg">The choice of <strong>Color </strong>should be related to some kind of relationship between the symbol and the concept it represents. Color is one of the most <strong>cognitively effective</strong> visual variables for the human visual system. Differences in color are detected <strong>three times</strong> faster than shape and are also more easily remembered. However it should not be used as the <strong>sole basis</strong> for distinguishing between symbols, as it is sensitive to variations in visual perception (e.g., color blindness), in screen/printer characteristics (e.g., B/W printer) and in representational mediums (e.g., whiteboards/paper).</div>
+<img onclick="toggleSpecific('hideimg');" src="img/colors2.jpg">
+
+<table>
+<tr><td><a href="#" onclick="toggleSpecific('hidecapacity');"><strong>Color capacity = 7 - 10</strong></a>
+ <div class="hide" id="hidecapacity" style="display:none">The capacity of a visual variable is defined as the number of different perceptible steps by human mind. The number of used values on the visual notation do not should be greater than to the visual variable capacity.</div></td></tr>
+</table>
+
+<p><em><strong>The choice of the variable, which would be most appropriate to represent each aspect of information depends on its characteristics. <br>Color's characteristics:</strong><em><p/>
+<table>
+<tr><td><a href="#" onclick="toggleSpecific('hide1');"><strong>Selective</strong></a>
+<div class="hide" id="hide1" style="display:none">If a mark changes in this variable and as an effect can be selected from the other marks easily the visual variable is said to be selective.</div>
+<div><img src="img/colorselective.jpg"></div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide2');"><strong>Associative</strong></a>
+<div class="hide" id="hide2" style="display:none">Several marks can be grouped across changes in other visual variables.</div>
+<div><img src="img/colorassociative.jpg"></div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide3');"><strong>Quantitative</strong></a>
+<div class="hide" id="hide3" style="display:none">If the difference between two marks in this variable can be interpreted numerically, the visual variable is quantitative.</div>
+<div><img src="img/colorquantitative.jpg"></div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide4');"><strong>Order</strong></a>
+<div class="hide" id="hide4" style="display:none">If the variable supports ordered reading it is an ordered visual variable. This means that a change could be read as more or less (e.g. in size you can order marks according to their area).</div>
+<div><img src="img/colororder.jpg"></div></td></tr>
+<tr><td><a href="#" onclick="toggleSpecific('hide5');"><strong>Lenght</strong></a>
+<div class="hide" id="hide5" style="display:none">The length defines how many values the variable features. For example how many shades of grey can be recognized?</div>
+<div><img src="img/colorlenght.jpg"></div></td></tr>
+</table>
+
+
+
+</div>
+</body>
+</html>

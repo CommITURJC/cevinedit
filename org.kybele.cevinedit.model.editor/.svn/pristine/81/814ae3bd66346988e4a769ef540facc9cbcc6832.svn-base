@@ -1,0 +1,23 @@
+bin.includes = .,\
+               icons/,\
+               META-INF/,\
+               plugin.xml,\
+               html/,\
+               images/,\
+               bin/,\
+               src/,\
+               plugin.properties
+jars.compile.order = .
+source.. = src/
+output.. = bin
+src.includes = html/,\
+               icons/,\
+               images/,\
+               src/,\
+               plugin.xml,\
+               plugin.properties,\
+               build.properties,\
+               bin/,\
+               META-INF/,\
+               .project,\
+               .classpath
