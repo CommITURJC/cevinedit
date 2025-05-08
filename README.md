@@ -27,3 +27,4 @@ To download and install CEViNEdit in your computer please follow the steps below
 - Download and install Eclipse plug-in dependencies:
   - [GMF](https://github.com/eclipse-gmf-runtime/gmf-runtime)
   - [EuGENia](http://www.eclipse.org/epsilon/doc/eugenia/)
+  - Download the ready-to-use case study, where CEViNEdit is used to develop [an E/R diagrammer](https://github.com/CommITURJC/cevindedit/distribution/cevinedit-master.zip)
