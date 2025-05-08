@@ -23,7 +23,7 @@ To download and install CEViNEdit in your computer please follow the steps below
 
 - Install Eclipse Modeling Tools
 - Download and install CEViNEdit plugin (alpha):
-  - [GIT checkout](https://github.com/CommITURJC/cevindedit/cevinedit-master.zip)
+  - [GIT checkout](https://github.com/CommITURJC/cevindedit/distribution/cevinedit-master.zip)
 - Download and install Eclipse plug-in dependencies:
   - [GMF](https://github.com/eclipse-gmf-runtime/gmf-runtime)
   - [EuGENia](http://www.eclipse.org/epsilon/doc/eugenia/)
